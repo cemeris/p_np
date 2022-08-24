@@ -23,18 +23,8 @@ function getArraySumWithinNumbers(array $arr) {
             return $result_arr;
         }
 
-        // if (!increaseKey($pos, $count)) {
-        //     return [];
-        // }
-
-        if ($pos[1] + 1 < $count ) {
-            $pos[1]++;
-        }
-        elseif ($pos[0] + 2 < $count ) {
-            $pos[0]++;
-            $pos[1] = $pos[0] + 1;
-        }
-        else {
+        $continue = increaseKey($pos, $count);
+        if (!$continue) {
             return [];
         }
     }
@@ -50,12 +40,8 @@ function increaseKey(&$keys, $count) {
         $n++;
         if ($keys[$i] + $n < $count) {
             $keys[$i]++;
-            break;
+            return true;
         }
-    }
-    echo "<pre>" . print_r($keys, true) . " | " . $n . " _ " . $key_count . "_</pre>";
-    if ($n == $key_count) {
-        return true;
     }
 
     return false;
