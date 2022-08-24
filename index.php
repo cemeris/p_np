@@ -4,7 +4,8 @@ $test_value = [
     [3, 5, 6, -12, -10, -14],
     [3, 5, 8],
     [0, 3],
-    [-1, 3, 4, 5, 8]
+    [-1, 3, 4, 5, 8],
+    [-1, 3, 7, 5, 10],
 ];
 
 
@@ -40,6 +41,9 @@ function increaseKey(&$keys, $count) {
         $n++;
         if ($keys[$i] + $n < $count) {
             $keys[$i]++;
+            for ($m = 1; $m < $n; $m++) {
+                $keys[$i + $m] = $keys[$i] + $m;
+            }
             return true;
         }
     }
